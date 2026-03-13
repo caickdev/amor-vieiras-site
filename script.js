@@ -160,4 +160,59 @@ document.addEventListener('DOMContentLoaded', () => {
             "retina_detect": true
         });
     }
+// Controle de quantidade nos produtos (antes de adicionar ao carrinho)
+document.addEventListener('click', e => {
+    const target = e.target;
+
+    if (target.classList.contains('increase-qty') || target.classList.contains('decrease-qty')) {
+        const input = target.closest('.input-group').querySelector('.qty-input');
+        let qty = parseInt(input.value) || 1;
+
+        if (target.classList.contains('increase-qty')) {
+            qty = Math.min(qty + 1, 99); // limite máximo opcional
+        } else {
+            qty = Math.max(qty - 1, 1);
+        }
+
+        input.value = qty;
+    }
+});
+
+// Atualizar o evento de adicionar para usar a quantidade escolhida
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const id = btn.dataset.id;
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+        
+        // Pega a quantidade do input mais próximo
+        const qtyInput = btn.closest('.product-actions').querySelector('.qty-input');
+        const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+        if (!id || !name || isNaN(price) || quantity < 1) {
+            console.warn('Dados inválidos ao adicionar:', { id, name, price, quantity });
+            return;
+        }
+
+        let item = cart.find(i => i.id === id);
+        if (item) {
+            item.quantity += quantity;
+        } else {
+            cart.push({ id, name, price, quantity });
+        }
+
+        updateCart();
+
+        // Feedback visual
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+        btn.classList.add('btn-success');
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.classList.remove('btn-success');
+        }, 1500);
+    });
+});
 });
