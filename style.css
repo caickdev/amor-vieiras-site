@@ -148,3 +148,68 @@ body {
 .btn {
     user-select: none;
 }
+
+/* Ícones flutuantes */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.floating-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.floating-btn .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.75rem;
+    min-width: 20px;
+    height: 20px;
+    padding: 0;
+    line-height: 20px;
+}
+
+/* Ajuste mobile */
+@media (max-width: 576px) {
+    .floating-buttons {
+        bottom: 15px;
+        right: 15px;
+        gap: 12px;
+    }
+
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+    }
+}
+
+/* Cores específicas */
+.cart-float {
+    background-color: #0d6efd; /* azul primário do Bootstrap */
+}
+
+.whatsapp-float {
+    background-color: #25D366; /* verde oficial do WhatsApp */
+}
