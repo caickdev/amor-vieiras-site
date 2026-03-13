@@ -30,12 +30,15 @@ body {
 /* === IMAGENS DOS PRODUTOS - MESMO TAMANHO EM TODOS OS DISPOSITIVOS === */
 .product-card .card-img-top {
     width: 100%;
-    height: 200px;                    /* altura padrão mobile - ajustável */
-    object-fit: cover;                /* preenche o espaço, corta bordas se necessário */
+    height: 240px;                    /* aumentei um pouco para dar mais espaço vertical */
+    object-fit: contain;              /* mostra imagem INTEIRA, sem corte */
     object-position: center;
-    background-color: #f8f9fa;        /* fundo neutro caso a imagem não cubra tudo */
+    background-color: #f8f9fa;        /* fundo rosa claro ou branco para combinar com tema */
+    padding: 10px;                    /* espaço interno para não ficar colado nas bordas */
+    box-sizing: border-box;
     display: block;
 }
+
 
 /* === RESPONSIVIDADE - AJUSTE DE ALTURA DAS IMAGENS === */
 @media (max-width: 576px) {
