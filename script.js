@@ -62,9 +62,11 @@ function updateCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Inicializa tudo ao carregar a página
+// Tudo dentro de DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Controle de quantidade nos produtos (+ / - antes de adicionar)
+    console.log("Página carregada - inicializando carrinho");
+
+    // Controle de quantidade nos produtos (+ / -)
     document.addEventListener('click', e => {
         const target = e.target;
 
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Adicionar ao carrinho
+    // Adicionar ao carrinho
     const addButtons = document.querySelectorAll('.add-to-cart');
     console.log(`Encontrados ${addButtons.length} botões .add-to-cart`);
 
@@ -96,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = btn.dataset.name;
             const priceStr = btn.dataset.price;
 
-            // Pega quantidade do input
             const qtyInput = btn.closest('.product-actions')?.querySelector('.qty-input');
             const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
 
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            console.log('Adicionando:', { id, name, price, quantity });
+            console.log('Adicionando ao carrinho:', { id, name, price, quantity });
 
             let item = cart.find(i => i.id === id);
             if (item) {
@@ -133,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Controle de quantidade no carrinho (modal)
+    // Controle de quantidade e remoção no carrinho (modal)
     document.addEventListener('click', e => {
         const target = e.target;
 
@@ -164,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Finalizar no WhatsApp
+    // Finalizar no WhatsApp
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa tudo
     updateCart();
 
-    // Partículas (se ainda estiver usando)
+    // Partículas (fundo 3D)
     if (typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
             "particles": {
@@ -211,11 +212,5 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "retina_detect": true
         });
-   }
-
-// Teste manual: abre o modal ao carregar (remova depois de testar)
-window.addEventListener('load', () => {
-    updateCart();
-    // new bootstrap.Modal(document.getElementById('cartModal')).show(); // descomente para teste
-    });
+    }
 });
