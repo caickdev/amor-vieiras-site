@@ -77,6 +77,20 @@
     </style>
 </head>
 <body>
+    <!-- Ícones flutuantes (carrinho + WhatsApp) -->
+<div class="floating-buttons">
+    <!-- Botão Carrinho Flutuante -->
+    <button class="btn btn-primary floating-btn cart-float" data-bs-toggle="modal" data-bs-target="#cartModal" title="Ver Carrinho">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="floatingCartCount" class="badge bg-danger rounded-pill">0</span>
+    </button>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5567991161810?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20sabonetes%20artesanais" 
+       class="btn btn-success floating-btn whatsapp-float" target="_blank" title="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
