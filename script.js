@@ -10,16 +10,13 @@ function updateCart() {
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    // Contador navbar
     if (cartCount) cartCount.textContent = totalItems;
 
-    // Contador flutuante
     if (floatingCount) {
         floatingCount.textContent = totalItems;
         floatingCount.style.display = totalItems > 0 ? 'block' : 'none';
     }
 
-    // Modal carrinho
     if (cartItems) {
         if (cart.length === 0) {
             cartItems.innerHTML = '<p class="text-center text-muted py-4">Seu carrinho está vazio.</p>';
@@ -58,13 +55,12 @@ function updateCart() {
         }
     }
 
-    // Salva no localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Tudo dentro de DOMContentLoaded
+// Inicializa tudo ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Página carregada - inicializando carrinho");
+    console.log("Página carregada - inicializando carrinho e modais");
 
     // Controle de quantidade nos produtos (+ / -)
     document.addEventListener('click', e => {
@@ -83,6 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             input.value = qty;
+        }
+
+        // Controle de quantidade e remoção no carrinho
+        if (target.classList.contains('increase-cart-qty') || target.classList.contains('decrease-cart-qty')) {
+            const id = target.dataset.id;
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            if (target.classList.contains('increase-cart-qty')) {
+                item.quantity += 1;
+            } else if (target.classList.contains('decrease-cart-qty')) {
+                if (item.quantity > 1) {
+                    item.quantity -= 1;
+                } else if (confirm('Deseja remover o item?')) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+
+            updateCart();
+        }
+
+        const removeBtn = e.target.closest('.remove-item');
+        if (removeBtn) {
+            const id = removeBtn.dataset.id;
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
         }
     });
 
@@ -134,37 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Controle de quantidade e remoção no carrinho (modal)
-    document.addEventListener('click', e => {
-        const target = e.target;
-
-        if (target.classList.contains('increase-cart-qty') || target.classList.contains('decrease-cart-qty')) {
-            const id = target.dataset.id;
-            const item = cart.find(i => i.id === id);
-            if (!item) return;
-
-            if (target.classList.contains('increase-cart-qty')) {
-                item.quantity += 1;
-            } else if (target.classList.contains('decrease-cart-qty')) {
-                if (item.quantity > 1) {
-                    item.quantity -= 1;
-                } else if (confirm('Deseja remover o item?')) {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            }
-
-            updateCart();
-        }
-
-        // Remover item
-        const removeBtn = e.target.closest('.remove-item');
-        if (removeBtn) {
-            const id = removeBtn.dataset.id;
-            cart = cart.filter(item => item.id !== id);
-            updateCart();
-        }
-    });
-
     // Finalizar no WhatsApp
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
@@ -193,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializa tudo
     updateCart();
 
-    // Partículas (fundo 3D)
+    // Partículas (opcional)
     if (typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
             "particles": {
