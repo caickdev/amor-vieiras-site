@@ -255,4 +255,8 @@ body {
     .parallax-bg {
         background-attachment: scroll; /* desativa parallax fixo em mobile (melhor performance) */
     }
-
+.navbar-brand.brand-black {
+    color: #000000 !important; /* preto puro */
+    /* Opcional: se quiser um tom preto mais suave ou com sombra */
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.1); */
+}
