@@ -1,0 +1,147 @@
+/* === ESTILO GERAL === */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.product-card {
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.price {
+    font-size: 1.4rem;
+}
+
+.banner-img {
+    max-width: 320px;
+    border: 8px solid white;
+    height: auto;
+    object-fit: contain;
+}
+
+/* === IMAGENS DOS PRODUTOS - MESMO TAMANHO EM TODOS OS DISPOSITIVOS === */
+.product-card .card-img-top {
+    width: 100%;
+    height: 200px;                    /* altura padrão mobile - ajustável */
+    object-fit: cover;                /* preenche o espaço, corta bordas se necessário */
+    object-position: center;
+    background-color: #f8f9fa;        /* fundo neutro caso a imagem não cubra tudo */
+    display: block;
+}
+
+/* === RESPONSIVIDADE - AJUSTE DE ALTURA DAS IMAGENS === */
+@media (max-width: 576px) {
+    /* Mobile pequeno */
+    .product-card .card-img-top {
+        height: 180px;                /* menor para economizar espaço vertical */
+    }
+
+    body {
+        font-size: 1.05rem;
+    }
+
+    h1 {
+        font-size: 2.2rem !important;
+    }
+
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .card-title {
+        font-size: 1.25rem !important;
+    }
+
+    .card-text {
+        font-size: 0.95rem !important;
+        line-height: 1.5;
+    }
+
+    .btn {
+        padding: 0.65rem 1.25rem !important;
+        font-size: 1rem !important;
+        min-height: 48px;
+        touch-action: manipulation;
+    }
+
+    .btn-sm {
+        padding: 0.55rem 1rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .product-actions {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .product-actions .btn {
+        width: 100% !important;
+    }
+
+    .banner-img {
+        max-width: 280px !important;
+    }
+
+    #cartModal .modal-dialog {
+        margin: 0.5rem !important;
+    }
+
+    .card-body {
+        padding: 1.25rem !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+    /* Mobile maior / tablets pequenos */
+    .product-card .card-img-top {
+        height: 200px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Tablets */
+    .product-card .card-img-top {
+        height: 220px;
+    }
+
+    .product-actions {
+        flex-direction: row !important;
+    }
+
+    .product-actions .btn {
+        width: auto !important;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Desktop */
+    .product-card .card-img-top {
+        height: 180px;                /* maior para melhor visual em telas grandes */
+    }
+
+    .banner-img {
+        max-width: 400px;
+    }
+}
+
+/* === OUTRAS MELHORIAS GERAIS === */
+.row.g-4 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card.h-100 {
+    height: 100% !important;
+}
+
+.btn {
+    user-select: none;
+}

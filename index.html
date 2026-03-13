@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<meta name="description" content="Sabonetes artesanais naturais Amor Vieiras - feitos com carinho em Campo Grande/MS. Hipoalergênicos, veganos e sustentáveis.">
+<meta name="keywords" content="sabonetes artesanais, sabonetes naturais, amor vieiras, campo grande, sabonete vegano">
+<meta property="og:title" content="Amor Vieiras - Sabonetes Artesanais Naturais">
+<meta property="og:description" content="Sabonetes feitos com amor e ingredientes naturais. Peça o seu agora!">
+<meta property="og:image" content="images/banner.jpeg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Amor Vieiras - Sabonetes Artesanais Naturais</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* === MELHORIAS RESPONSIVIDADE MOBILE === */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .product-card .card-img-top {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center;
+            background-color: #f8f9fa;
+        }
+
+        @media (max-width: 576px) {
+            body { font-size: 1.05rem; }
+            h1 { font-size: 2.2rem !important; }
+            h2 { font-size: 1.8rem !important; }
+            .card-title { font-size: 1.25rem !important; }
+            .card-text { font-size: 0.95rem !important; line-height: 1.5; }
+
+            .btn { 
+                padding: 0.65rem 1.25rem !important; 
+                font-size: 1rem !important; 
+                min-height: 48px; 
+            }
+            .btn-sm { 
+                padding: 0.55rem 1rem !important; 
+                font-size: 0.95rem !important; 
+            }
+
+            .product-actions {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+            }
+
+            .product-actions .btn {
+                width: 100% !important;
+            }
+
+            .banner-img {
+                max-width: 280px !important;
+            }
+
+            #cartModal .modal-dialog {
+                margin: 0.5rem !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .product-card .card-img-top {
+                height: 240px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .product-card .card-img-top {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-danger" href="#">Amor Vieiras</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item position-relative ms-3">
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <header class="banner text-center py-5">
+        <div class="container">
+            <img src="images/banner.jpeg" alt="Banner Amor Vieiras" class="img-fluid banner-img rounded-circle shadow" loading="lazy">
+            <h1 class="mt-4">Amor Vieiras</h1>
+            <p class="lead">Sabonetes Artesanais Naturais</p>
+            <div class="contacts mt-3">
+                <a href="https://www.instagram.com/saboneteamorvieiras/" target="_blank" class="btn btn-outline-dark me-2">
+                    <i class="fab fa-instagram"></i> @saboneteamorvieiras
+                </a>
+                <a href="https://wa.me/5567991161810" target="_blank" class="btn btn-success">
+                    <i class="fab fa-whatsapp"></i> (67) 99116-1810
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5">
+        <div class="container text-center">
+            <h2>Sobre Nós</h2>
+            <p class="lead mx-auto" style="max-width: 800px;">
+                Amor Vieiras é uma marca de sabonetes artesanais feitos com ingredientes naturais, como glicerina vegetal, óleos essenciais e extratos de plantas. Nossos produtos são hipoalergênicos, veganos e criados com amor para cuidar da sua pele de forma gentil e sustentável.
+            </p>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nossos Sabonetes</h2>
+            <div class="row g-4">
+
+                <!-- Produto Novo 1 - Dolomita Clareador -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-dolomita-clareador.jpeg" class="card-img-top" alt="Sabonete Dolomita Clareador" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Dolomita Clareador</h5>
+            <p class="card-text small text-muted">Ideal para higiene íntima e corporal, atua como antisséptico, cicatrizante e anti-inflamatório natural.</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="dolomita" data-name="Sabonete Dolomita Clareador" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Dolomita%20Clareador" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto Novo 2 - Maracujá -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabao-maracuja.jpeg" class="card-img-top" alt="Sabonete de Maracujá" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete de Maracujá</h5>
+            <p class="card-text small text-muted">Sinta a pele acordar fresca e plena de vida! O poder refrescante do maracujá equilibra hidratação e oleosidade, nutre profundamente e deixa um toque sedoso e deliciosamente perfumado. Banho revigorante que faz você se sentir leve, hidratada e pronta para brilhar o dia todo.</p>
+            <p class="price fw-bold text-success">R$ 18,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="maracuja" data-name="Sabonete de Maracujá" data-price="18.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20de%20Maracuj%C3%A1" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto Novo 3 - Sal Grosso e Alecrim -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabao-sal-grosso-alecrim.jpeg" class="card-img-top" alt="Sabonete Sal Grosso e Alecrim" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Sal Grosso e Alecrim</h5>
+            <p class="card-text small text-muted">Limpeza profunda que renova corpo e energia! A combinação poderosa de sal grosso purificador + alecrim revitalizante esfolia suavemente, elimina impurezas, estimula a circulação e deixa a pele visivelmente mais lisa, tonificada e cheia de vitalidade. Sinta-se purificada e energizada como nunca!</p>
+            <p class="price fw-bold text-success">R$ 20,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="sal-alecrim" data-name="Sabonete Sal Grosso e Alecrim" data-price="20.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Sal%20Grosso%20e%20Alecrim" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto Novo 4 - Barbatimão -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabao-barbatimao.jpeg" class="card-img-top" alt="Sabonete Barbatimão" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Barbatimão</h5>
+            <p class="card-text small text-muted">Cuidado íntimo e corporal com proteção natural! Este sabonete de barbatimão é um verdadeiro aliado antisséptico, cicatrizante e anti-inflamatório — acalma irritações, promove cicatrização rápida e oferece frescor e segurança prolongados. Pele saudável, confortável e protegida todos os dias.</p>
+            <p class="price fw-bold text-success">R$ 22,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="barbatimão" data-name="Sabonete Barbatimão" data-price="22.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Barbatim%C3%A3o" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+                            <!-- Produto 5 - Kit Coleção Variada -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/colecao-variada.jpeg" class="card-img-top" alt="Kit Coleção Variada" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Kit Coleção Variada</h5>
+           <p class="card-text small text-muted">Descubra a alegria de cuidar da pele com cores vibrantes e formas encantadoras! Este kit traz uma seleção exclusiva de sabonetes artesanais coloridos e divertidos, perfeitos para presentear ou se mimar todos os dias. Cada peça é feita com carinho e ingredientes naturais.</p>
+            <p class="price fw-bold text-success">R$ 50,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="kit-variado" data-name="Kit Coleção Variada" data-price="50.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Kit%20Cole%C3%A7%C3%A3o%20Variada" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto 6 - Rosa Mosqueta -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-rosa-mosqueta.jpeg" class="card-img-top" alt="Sabonete Rosa Mosqueta" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Rosa Mosqueta</h5>
+            <p class="card-text small text-muted">Transforme sua rotina de limpeza em um momento de renovação! Este sabonete com óleo de rosa mosqueta limpa suavemente, regenera profundamente, hidrata intensamente e deixa a pele sedosa e preparada para receber maquiagem ou apenas brilhar naturalmente. Ideal para quem busca pele mais jovem e luminosa.</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="rosa-mosqueta" data-name="Sabonete Rosa Mosqueta" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Rosa%20Mosqueta" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto 7 - Mel -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-mel.jpeg" class="card-img-top" alt="Sabonete de Mel" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete de Mel</h5>
+           <p class="card-text small text-muted">Um verdadeiro carinho para peles secas, sensíveis ou com acne! O poder hidratante, antisséptico e cicatrizante do mel natural age suavemente, acalma irritações, ajuda na recuperação da pele e deixa um toque aveludado e deliciosamente perfumado. Perfeito para quem merece um banho de afeto e nutrição.</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="mel" data-name="Sabonete de Mel" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20de%20Mel" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto 8 - Morango -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-morango.jpeg" class="card-img-top" alt="Sabonete de Morango" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete de Morango</h5>
+            <p class="card-text small text-muted">Sinta a pele acordar cheia de vida! Este sabonete de morango entrega hidratação intensa, poderosa ação antioxidante e proteção contra o envelhecimento precoce. O aroma irresistível e a textura cremosa transformam o banho em um ritual de frescor, juventude e bem-estar diário.</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="morango" data-name="Sabonete de Morango" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20de%20Morango" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto 9 - Pato Infantil -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-pato.jpeg" class="card-img-top" alt="Sabonete Infantil Pato" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Infantil Pato</h5>
+            <p class="card-text small text-muted">Faça o banho das crianças virar pura diversão e carinho! Este sabonete infantil em formato de patinho é 100% natural, super suave e delicado com a pele sensível dos pequenos. Cheirinho gostoso, espuma fofa e zero irritação — mamãe e papai aprovam, e as crianças amam!</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="pato" data-name="Sabonete Infantil Pato" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Infantil%20Pato" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Produto 10 - Balão Infantil -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm product-card">
+        <img src="images/sabonete-balao.jpeg" class="card-img-top" alt="Sabonete Infantil Balão" loading="lazy">
+        <div class="card-body text-center">
+            <h5 class="card-title">Sabonete Infantil Balão</h5>
+            <p class="card-text small text-muted">Transforme a hora do banho em uma aventura colorida! Com formato de balãozinho divertido, este sabonete infantil natural limpa com extrema delicadeza, hidrata suavemente e encanta os olhinhos curiosos das crianças. Banho feliz, pele macia e sorrisos garantidos todos os dias.</p>
+            <p class="price fw-bold text-success">R$ 15,00</p>
+            <div class="d-flex justify-content-center gap-2 mt-3 product-actions flex-wrap">
+                <button class="btn btn-outline-primary btn-sm add-to-cart"
+                        data-id="balao" data-name="Sabonete Infantil Balão" data-price="15.00">
+                    <i class="fas fa-cart-plus"></i> Adicionar
+                </button>
+                <a href="https://wa.me/5567991161810?text=Quero%20comprar%201%20Sabonete%20Infantil%20Bal%C3%A3o" 
+                   class="btn btn-primary btn-sm">Comprar Agora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal Carrinho -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Seu Carrinho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems" class="list-group mb-3"></div>
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Total:</span>
+                        <span id="cartTotal">R$ 0,00</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar Comprando</button>
+                    <button type="button" id="checkoutBtn" class="btn btn-success">Finalizar no WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contato -->
+    <section id="contato" class="py-5 text-center">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p class="lead">Estamos em Campo Grande, MS. Envie uma mensagem!</p>
+            <a href="https://wa.me/5567991161810" class="btn btn-lg btn-success me-3">
+                <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+            </a>
+            <a href="https://www.instagram.com/saboneteamorvieiras/" class="btn btn-lg btn-outline-dark">
+                <i class="fab fa-instagram"></i> Seguir no Instagram
+            </a>
+        </div>
+    </section>
+
+    <footer class="text-center py-5 bg-light">
+        <p class="mb-0">© 2026 Amor Vieiras. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
