@@ -1,11 +1,54 @@
 // Carrinho - Armazenamento persistente no navegador
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Atualiza o contador, lista de itens e total no modal
 function updateCart() {
     const cartCount = document.getElementById('cartCount');
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
+
+    // Atualiza o badge do ícone do carrinho (navbar)
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCount) cartCount.textContent = totalItems;
+
+    if (cartItems) {
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="text-center text-muted py-4">Seu carrinho está vazio.</p>';
+            if (cartTotal) cartTotal.textContent = 'R$ 0,00';
+        } else {
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+
+                html += `
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>R$ ${item.price.toFixed(2)} × ${item.quantity}</small>
+                        </div>
+                        <div>
+                            <span class="badge bg-primary rounded-pill me-2">R$ ${subtotal.toFixed(2)}</span>
+                            <button class="btn btn-sm btn-outline-danger remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = html;
+            if (cartTotal) cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+        }
+    }
+
+    // Salva no localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // ATUALIZA O CONTADOR FLUTUANTE AGORA
+    updateFloatingCartCount();
+}
 
     // Atualiza o badge do ícone do carrinho
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
