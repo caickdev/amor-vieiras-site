@@ -149,4 +149,55 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCart();
     updateFloatingCartCount();
 });
+// Inicializa o fundo de partículas 3D
+particlesJS("particles-js", {
+    "particles": {
+        "number": {
+            "value": 60,          // quantidade de partículas (menos = mais leve)
+            "density": { "enable": true, "value_area": 800 }
+        },
+        "color": {
+            "value": ["#ffb6c1", "#ff69b4", "#ffd1dc", "#ffffff", "#f8b8d0"]  // tons rosa pastel + branco
+        },
+        "shape": {
+            "type": "circle",     // círculo (como bolhas de sabão)
+            "stroke": { "width": 0 }
+        },
+        "opacity": {
+            "value": 0.6,
+            "random": true,
+            "anim": { "enable": true, "speed": 1, "opacity_min": 0.3 }
+        },
+        "size": {
+            "value": 5,
+            "random": true,
+            "anim": { "enable": true, "speed": 2, "size_min": 2 }
+        },
+        "line_linked": {
+            "enable": false       // sem linhas conectando (mais clean)
+        },
+        "move": {
+            "enable": true,
+            "speed": 1.5,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": { "enable": false }
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": { "enable": true, "mode": "bubble" },  // bolhas crescem ao passar o mouse
+            "onclick": { "enable": false },
+            "resize": true
+        },
+        "modes": {
+            "bubble": { "distance": 200, "size": 8, "duration": 2, "opacity": 0.8, "speed": 3 }
+        }
+    },
+    "retina_detect": true
+});
 });
