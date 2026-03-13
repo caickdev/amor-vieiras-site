@@ -129,4 +129,24 @@ if (checkoutBtn) {
 // Inicializa o carrinho ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     updateCart();
+
+// Atualiza o contador flutuante do carrinho (sincronizado com o updateCart)
+function updateFloatingCartCount() {
+    const floatingCount = document.getElementById('floatingCartCount');
+    if (floatingCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        floatingCount.textContent = totalItems;
+        floatingCount.style.display = totalItems > 0 ? 'block' : 'none';
+    }
+}
+
+// Chame a função toda vez que atualizar o carrinho
+// Adicione esta linha no final da função updateCart():
+updateFloatingCartCount();
+
+// E também no inicializador:
+document.addEventListener('DOMContentLoaded', () => {
+    updateCart();
+    updateFloatingCartCount();
+});
 });
