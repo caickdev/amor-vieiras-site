@@ -149,7 +149,7 @@ body {
     user-select: none;
 }
 
-/* Ícones flutuantes */
+/* Ícones flutuantes - atualizado com Instagram */
 .floating-buttons {
     position: fixed;
     bottom: 20px;
@@ -157,7 +157,7 @@ body {
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* espaço entre os botões */
 }
 
 .floating-btn {
@@ -172,6 +172,7 @@ body {
     align-items: center;
     justify-content: center;
     border: none;
+    color: white;
 }
 
 .floating-btn:hover {
@@ -190,6 +191,19 @@ body {
     line-height: 20px;
 }
 
+/* Cores específicas */
+.cart-float {
+    background-color: #0d6efd; /* azul Bootstrap */
+}
+
+.whatsapp-float {
+    background-color: #25D366; /* verde WhatsApp */
+}
+
+.instagram-float {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* gradiente oficial Instagram */
+}
+
 /* Ajuste mobile */
 @media (max-width: 576px) {
     .floating-buttons {
@@ -203,13 +217,4 @@ body {
         height: 55px;
         font-size: 1.6rem;
     }
-}
-
-/* Cores específicas */
-.cart-float {
-    background-color: #0d6efd; /* azul primário do Bootstrap */
-}
-
-.whatsapp-float {
-    background-color: #25D366; /* verde oficial do WhatsApp */
 }
