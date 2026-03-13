@@ -64,6 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
     addButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            // Controle de quantidade nos produtos (+ / -)
+document.addEventListener('click', e => {
+    const target = e.target;
+
+    if (target.classList.contains('increase-qty') || target.classList.contains('decrease-qty')) {
+        // Encontra o input de quantidade mais próximo
+        const input = target.closest('.input-group').querySelector('.qty-input');
+        if (!input) return;
+
+        let qty = parseInt(input.value) || 1;
+
+        if (target.classList.contains('increase-qty')) {
+            qty = Math.min(qty + 1, 99); // limite máximo opcional (99 unidades)
+        } else if (target.classList.contains('decrease-qty')) {
+            qty = Math.max(qty - 1, 1); // não deixa ir abaixo de 1
+        }
+
+        input.value = qty;
+    }
+});
 
             const id = btn.dataset.id;
             const name = btn.dataset.name;
