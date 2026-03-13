@@ -55,42 +55,46 @@ function updateCart() {
     // Salva no localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }
-
-// Adicionar ao carrinho
+    //Adiciona no carrinho
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Controle de quantidade nos produtos (+ / -)
+    document.addEventListener('click', e => {
+        const target = e.target;
+
+        if (target.classList.contains('increase-qty') || target.classList.contains('decrease-qty')) {
+            const input = target.closest('.input-group')?.querySelector('.qty-input');
+            if (!input) return;
+
+            let qty = parseInt(input.value) || 1;
+
+            if (target.classList.contains('increase-qty')) {
+                qty = Math.min(qty + 1, 99); // limite máximo
+            } else if (target.classList.contains('decrease-qty')) {
+                qty = Math.max(qty - 1, 1); // mínimo 1
+            }
+
+            input.value = qty;
+        }
+    });
+
+    // 2. Adicionar ao carrinho (agora separado)
     const addButtons = document.querySelectorAll('.add-to-cart');
     console.log(`Encontrados ${addButtons.length} botões add-to-cart`);
 
     addButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Controle de quantidade nos produtos (+ / -)
-document.addEventListener('click', e => {
-    const target = e.target;
-
-    if (target.classList.contains('increase-qty') || target.classList.contains('decrease-qty')) {
-        // Encontra o input de quantidade mais próximo
-        const input = target.closest('.input-group').querySelector('.qty-input');
-        if (!input) return;
-
-        let qty = parseInt(input.value) || 1;
-
-        if (target.classList.contains('increase-qty')) {
-            qty = Math.min(qty + 1, 99); // limite máximo opcional (99 unidades)
-        } else if (target.classList.contains('decrease-qty')) {
-            qty = Math.max(qty - 1, 1); // não deixa ir abaixo de 1
-        }
-
-        input.value = qty;
-    }
-});
 
             const id = btn.dataset.id;
             const name = btn.dataset.name;
             const priceStr = btn.dataset.price;
 
-            if (!id || !name || !priceStr) {
-                console.error('Dados incompletos no botão:', btn);
+            // Pega a quantidade do input mais próximo
+            const qtyInput = btn.closest('.product-actions')?.querySelector('.qty-input');
+            const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+
+            if (!id || !name || !priceStr || quantity < 1) {
+                console.error('Dados inválidos ao adicionar:', { id, name, priceStr, quantity });
                 return;
             }
 
@@ -100,13 +104,13 @@ document.addEventListener('click', e => {
                 return;
             }
 
-            console.log('Adicionando:', { id, name, price });
+            console.log('Adicionando:', { id, name, price, quantity });
 
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.quantity += 1;
+            let item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += quantity;
             } else {
-                cart.push({ id, name, price, quantity: 1 });
+                cart.push({ id, name, price, quantity });
             }
 
             updateCart();
@@ -122,7 +126,7 @@ document.addEventListener('click', e => {
         });
     });
 
-    // Remover item
+    // 3. Remover item do carrinho
     document.addEventListener('click', e => {
         const btn = e.target.closest('.remove-item');
         if (btn) {
@@ -132,7 +136,7 @@ document.addEventListener('click', e => {
         }
     });
 
-    // Finalizar no WhatsApp
+    // 4. Finalizar no WhatsApp
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
@@ -150,13 +154,22 @@ document.addEventListener('click', e => {
                 total += subtotal;
             });
 
-            message += `\nTotal: R$ ${total.toFixed(2)}\n\nEndereço de entrega: [insira aqui]\nForma de pagamento: [pix / dinheiro / cartão]\nObservações: [opcional]`;
+            message += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
+            message += 'Endereço de entrega: [insira aqui]\n';
+            message += 'Forma de pagamento: [pix / dinheiro / cartão]\n';
+            message += 'Observações: [opcional]';
 
             const url = `https://wa.me/5567991161810?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         });
     }
 
+    // Inicializa tudo
+    updateCart();
+
+    // (seu código de partículas continua aqui, se tiver)
+    // particlesJS(...);
+});
     // Inicializa tudo
     updateCart();
 
