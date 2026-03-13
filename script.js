@@ -211,5 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "retina_detect": true
         });
-    }
+   }
+
+// Teste manual: abre o modal ao carregar (remova depois de testar)
+window.addEventListener('load', () => {
+    updateCart();
+    // new bootstrap.Modal(document.getElementById('cartModal')).show(); // descomente para teste
+    });
 });
