@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 total += subtotal;
             });
 
-            message += `\nTotal: R$ ${total.toFixed(2)}\n\nEndereço de entrega: [insira aqui]\nForma de pagamento: [pix / dinheiro / cartão]\nObservações: [opcional]`;
+            message += `\nTotal: R$ ${total.toFixed(2)}\n\nEndereço de entrega: [insira aqui]\nForma de pagamento: [pix / dinheiro]\nObservações: [opcional]`;
 
             const url = `https://wa.me/5567991161810?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
